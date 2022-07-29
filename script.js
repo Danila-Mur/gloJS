@@ -1,9 +1,9 @@
-let title = 'Glo JS';
-let screens = 'Desktop, Tablet, Mobile';
-let screenPrice = 300;
-const rollback = 50; 
-let fullPrice = 80000;
-let adaptive = true;
+const title = 'Glo JS',
+  screens = 'Desktop, Tablet, Mobile',
+  screenPrice = 300,
+  rollback = 50,
+  fullPrice = 80000,
+  adaptive = true;
 
 console.log(typeof title, typeof fullPrice, typeof adaptive);
 // or
@@ -15,5 +15,4 @@ console.log('screens: ', screens.length);
 console.log('Стоимость верстки экранов ' + screenPrice + ' рублей');
 console.log('Стоимость разработки сайта ' + fullPrice + ' рублей');
 console.log(screens.toLocaleLowerCase().split(', '));
-console.log(fullPrice * rollback / 100);
-
+console.log((fullPrice * rollback) / 100);
