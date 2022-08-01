@@ -1,9 +1,32 @@
-const title = 'Glo JS',
-  screens = 'Desktop, Tablet, Mobile',
-  screenPrice = 300,
+'use strict';
+
+const title = prompt('Введите название Вашего проекта...'),
+  screens = prompt('Введите типы экранов для разработки'),
+  screenPrice = +prompt('Сколько будет стоить данная работа?'),
   rollback = 50,
-  fullPrice = 80000,
-  adaptive = true;
+  adaptive = confirm('Нужен ли адаптив на сайте?'),
+  service1 = prompt('Какой дополнительный тип услуги нужен?'),
+  servicePrice1 = +prompt('Сколько это будет стоить?'),
+  service2 = prompt('Какой дополнительный тип услуги нужен?'),
+  servicePrice2 = +prompt('Сколько это будет стоить?'),
+  fullPrice = screenPrice + servicePrice1 + servicePrice2,
+  servicePercentPrice = Math.ceil(fullPrice - (13 * 100));
+
+switch(true) {
+  case fullPrice >= 30000:
+    console.log('Скидка 10%');
+    break;
+  case fullPrice >= 15000 && fullPrice < 30000: 
+    console.log('Скидка 5%');
+    break;
+  case fullPrice > 0 && fullPrice < 15000:
+    console.log('Скидка не предусмотрена');
+    break;
+  case fullPrice <= 0:
+    console.log('Что то пошло не так');
+    break;
+    
+}
 
 console.log(typeof title, typeof fullPrice, typeof adaptive);
 // or
