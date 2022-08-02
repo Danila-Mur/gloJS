@@ -10,22 +10,20 @@ const title = prompt('Введите название Вашего проект�
   service2 = prompt('Какой дополнительный тип услуги нужен?'),
   servicePrice2 = +prompt('Сколько это будет стоить?'),
   fullPrice = screenPrice + servicePrice1 + servicePrice2,
-  servicePercentPrice = Math.ceil(fullPrice - (13 * 100));
+  servicePercentPrice = Math.ceil(fullPrice - rollback);
 
 switch(true) {
   case fullPrice >= 30000:
     console.log('Скидка 10%');
     break;
-  case fullPrice >= 15000 && fullPrice < 30000: 
+  case fullPrice >= 15000: 
     console.log('Скидка 5%');
     break;
-  case fullPrice > 0 && fullPrice < 15000:
+  case fullPrice >= 0:
     console.log('Скидка не предусмотрена');
     break;
-  case fullPrice <= 0:
-    console.log('Что то пошло не так');
-    break;
-    
+  default:
+    console.log('Что то пошло не так');    
 }
 
 console.log(typeof title, typeof fullPrice, typeof adaptive);
@@ -38,4 +36,3 @@ console.log('screens: ', screens.length);
 console.log('Стоимость верстки экранов ' + screenPrice + ' рублей');
 console.log('Стоимость разработки сайта ' + fullPrice + ' рублей');
 console.log(screens.toLocaleLowerCase().split(', '));
-console.log((fullPrice * rollback) / 100);
