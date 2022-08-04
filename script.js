@@ -11,8 +11,7 @@ let title,
 const rollback = 50;
 
 const isNumber = (num) => {
-  // num = +toString(num).trim();
-  return !isNaN(parseFloat(num)) && isFinite(num);
+  return !isNaN(parseFloat(num)) && isFinite(num) && num.trim() === num;
 };
 
 const asking = () => {
@@ -23,7 +22,7 @@ const asking = () => {
   );
 
   do {
-    screenPrice = prompt('Сколько будет стоить данная работа?', 15000).trim();
+    screenPrice = prompt('Сколько будет стоить данная работа?', 15000);
   } while (!isNumber(screenPrice));
 
   adaptive = confirm('Нужен ли адаптив на сайте?');
@@ -31,6 +30,7 @@ const asking = () => {
 
 const getAllServicePrices = function () {
   let sum = 0;
+  let price;
 
   for (let i = 0; i < 2; i++) {
     if (i === 0) {
@@ -40,11 +40,12 @@ const getAllServicePrices = function () {
     }
 
     do {
-      sum = prompt('Сколько это будет стоить?');
-    } while (!isNumber(sum));
+      price = prompt('Сколько это будет стоить?', '10000');
+    } while (!isNumber(price));
+    sum += +price;
   }
 
-  return +sum + +sum;
+  return sum;
 };
 
 function getFullPrice(screenPrice, allServicePrices) {
