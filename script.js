@@ -19,6 +19,13 @@ const appData = {
     appData.logger();
   },
   logger: function () {
+    for (let key in appData) {
+      if (typeof appData[key] === 'function') {
+        console.log('key: ', key);
+      } else {
+        console.log('key: ', key + ' appData: ', appData[key]);
+      }
+    }
     console.log(appData.title);
     console.log(appData.screens.toLocaleLowerCase().split(', '));
     console.log(appData.getRollbackMessage(appData.fullPrice));
