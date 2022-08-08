@@ -92,12 +92,3 @@ const appData = {
 };
 
 appData.start();
-// appData.allServicePrices = appData.getAllServicePrices();
-// appData.fullPrice = appData.getFullPrice();
-// appData.title = appData.getTitle();
-// appData.servicePercentPrice = appData.getServicePercentPrices();
-
-// console.log(appData.fullPrice);
-// console.log(appData.servicePercentPrice);
-
-// console.log(appData.getAllServicePrices());
