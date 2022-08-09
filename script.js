@@ -64,10 +64,7 @@ const appData = {
       let counter = 0;
       do {
         name = prompt('Какой дополнительный тип услуги нужен?');
-        if (appData.services.hasOwnProperty(name)) {
-          counter++;
-          name = name + '_' + counter;
-        }
+        name += '_' + appData.randoHash(4)
       } while (appData.isNumber(name));
 
       do {
@@ -77,11 +74,19 @@ const appData = {
       appData.services[name] = +price;
     }
   },
+  randoHash: function (i) {
+    let rnd = '';
+    while (rnd.length < i) {
+      rnd += Math.random().toString(36).substring(2);
+    }
+    return rnd.substring(0, i);
+  },
   addPrices: function () {
-    appData.screens.reduce((previousValue, currentValue) => {
-      appData.screenPrice = +previousValue.price + +currentValue.price;
-    });
-
+    appData.screenPrice = appData.screens.reduce(
+      (previousValue, currentValue) => {
+        return +previousValue.price + +currentValue.price;
+      }
+    );
   },
   isNumber: function (num) {
     return !isNaN(parseFloat(num)) && isFinite(num) && num.trim() === num;
