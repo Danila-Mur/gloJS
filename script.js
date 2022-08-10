@@ -37,18 +37,18 @@ const appData = {
         'Введите название Вашего проекта...',
         'Калькулятор верстки'
       );
-    } while (appData.isNumber(appData.title));
+    } while (!appData.isString(appData.title));
 
     appData.adaptive = confirm('Нужен ли адаптив на сайте?');
 
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 3; i++) {
       let name;
       do {
         name = prompt(
           'Введите типы экранов для разработки',
           'Desktop, tablet, mobile'
         );
-      } while (appData.isNumber(name));
+      } while (!appData.isString(name));
       let price = 0;
 
       do {
@@ -61,11 +61,10 @@ const appData = {
     for (let i = 0; i < 2; i++) {
       let name;
       let price = 0;
-      let counter = 0;
       do {
         name = prompt('Какой дополнительный тип услуги нужен?');
-        name += '_' + appData.randoHash(4)
-      } while (appData.isNumber(name));
+      } while (!appData.isString(name));
+      name += '_' + appData.randoHash(4);
 
       do {
         price = prompt('Сколько это будет стоить?', '10000');
@@ -82,11 +81,12 @@ const appData = {
     return rnd.substring(0, i);
   },
   addPrices: function () {
-    appData.screenPrice = appData.screens.reduce(
-      (previousValue, currentValue) => {
-        return +previousValue.price + +currentValue.price;
-      }
-    );
+    appData.screenPrice = appData.screens.reduce((acc, screen) => {
+      return +acc + +screen.price;
+    }, 0);
+  },
+  isString: function (str) {
+    return str.trim() && !appData.isNumber(str);
   },
   isNumber: function (num) {
     return !isNaN(parseFloat(num)) && isFinite(num) && num.trim() === num;
